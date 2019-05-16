@@ -2,7 +2,7 @@
 
 For this Sprint Challenge, you will be traversing a map based on the adventure engine from Week 1 of `Intro to Python`.
 
-Good luck and have fun! :smile:
+Good luck and have fun! :smile: 
 
 Note: The `legacy` directory contains an old exercise for archival purposes. You do not need to work on this and it will not be graded.
 
