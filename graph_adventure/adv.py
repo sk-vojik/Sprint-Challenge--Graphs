@@ -52,13 +52,14 @@ def traverse(player, direction=''):
 
     # add the room to the graph
     if player.currentRoom.id not in traversalGraph:
-        traversalGraph[player.currentRoomid] = {}
+        traversalGraph[player.currentRoom.id] = {}
         for exit in player.currentRoom.getExits():
             traversalGraph[player.currentRoom.id][exit] = '?'
 
-    opposite = oppositeDirection[direction]
-    previous = player.currentRoom.getRoomInDirection(opposite)
-    traversalGraph[currentRoom][opposite] = previous.id
+    if direction is not '':
+        opposite = oppositeDirection[direction]
+        previous = player.currentRoom.getRoomInDirection(opposite)
+        traversalGraph[currentRoom][opposite] = previous.id
 
     roomExit = '?'
 
@@ -101,6 +102,15 @@ def traverse(player, direction=''):
                     newPath = list(path)
                     newPath.append(neighbor)
                     q.enqueue(newPath)
+    for r in travelPath:
+        room = player.currentRoom.id
+        graphKeys = traversalGraph[room].keys()
+
+        # match up the values
+        for d in graphKeys:
+            if traversalGraph[room][d] == r:
+                player.travel[d]
+                travelPath.append(d)
 
 
 # TRAVERSAL TEST
